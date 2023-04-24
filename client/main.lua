@@ -1,16 +1,18 @@
+local societyScriptName <const> = "esx_society"
+
 local eventName <const> = {
     ['job'] = {
-        set = 'setJob',
-        get = 'getJob',
-        label = 'setJobLabel',
-        salary = 'setJobSalary',
+        set = ("%s:setJob"):format(societyScriptName),
+        get = ("%s:getJob"):format(societyScriptName),
+        label = ("%s:setJobLabel"):format(societyScriptName),
+        salary = ("%s:setJobSalary"):format(societyScriptName),
     },
 
     ['faction'] = {
-        set = 'setFaction',
-        get = 'getFaction',
-        label = 'setFactionLabel',
-        salary = 'setFactionSalary',
+        set = ("%s:setFaction"):format(societyScriptName),
+        get = ("%s:getFaction"):format(societyScriptName),
+        label = ("%s:setFactionLabel"):format(societyScriptName),
+        salary = ("%s:setFactionSalary"):format(societyScriptName),
     }
 }
 
@@ -344,8 +346,8 @@ function OpenManageGradesMenu(society, options, selected)
                     local label = tostring(menu.eles[2].inputValue)
 
                     ESX.TriggerServerCallback(eventName[selected].label, function()
-                    OpenManageGradesMenu(society, options, selected)
-                end, society, menu.eles[1].value, label)
+                        OpenManageGradesMenu(society, options, selected)
+                    end, society, menu.eles[1].value, label)
                 else
                     ESX.ShowNotification(TranslateCap('invalid_value_nochanges'))
                     OpenManageGradesMenu(society, options, selected)
