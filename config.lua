@@ -2,4 +2,4 @@ Config = {}
 
 Config.Locale = GetConvar('esx:locale', 'fr')
 Config.EnableESXIdentity = true
-Config.MaxSalary = 1500
+Config.MaxSalary = 750
