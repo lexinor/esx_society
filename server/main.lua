@@ -47,7 +47,8 @@ AddEventHandler('esx_society:checkSocietyBalance', function(society)
     local xPlayer = ESX.GetPlayerFromId(source)
     local society = GetSociety(society)
 
-    if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    --if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    if (xPlayer.job.name ~= society.name) then
         print(('esx_society: %s attempted to call checkSocietyBalance!'):format(xPlayer.identifier))
         return
     end
@@ -67,7 +68,8 @@ AddEventHandler('esx_society:withdrawMoney', function(societyName, amount)
     end
     local xPlayer = ESX.GetPlayerFromId(source)
     amount = ESX.Math.Round(tonumber(amount))
-    if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    --if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    if (xPlayer.job.name ~= society.name) then
         return print(('[^3WARNING^7] Player ^5%s^7 attempted to withdraw from society - ^5%s^7!'):format(source, society.name))
     end
 
@@ -93,7 +95,8 @@ AddEventHandler('esx_society:depositMoney', function(societyName, amount)
     end
     amount = ESX.Math.Round(tonumber(amount))
 
-    if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    --if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    if (xPlayer.job.name ~= society.name) then
         return print(('[^3WARNING^7] Player ^5%s^7 attempted to deposit to society - ^5%s^7!'):format(source, society.name))
     end
     if amount > 0 and xPlayer.getMoney() >= amount then
@@ -114,7 +117,8 @@ AddEventHandler('esx_society:washMoney', function(society, amount)
     local account = xPlayer.getAccount('black_money')
     amount = ESX.Math.Round(tonumber(amount))
 
-    if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    --if (xPlayer.job.name ~= society.name) or (xPlayer.faction.name ~= society.name) then
+    if (xPlayer.job.name ~= society.name) then
         return print(('[^3WARNING^7] Player ^5%s^7 attempted to wash money in society - ^5%s^7!'):format(source, society))
     end
     if amount and amount > 0 and account.money >= amount then
