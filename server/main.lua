@@ -277,9 +277,9 @@ ESX.RegisterServerCallback('esx_society:getJob', function(source, cb, society)
 	cb(job)
 end)
 
-ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier, job, grade, actionType)
+ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier, job, grade, actionType, bypassBoss)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local isBoss = xPlayer.job.grade_name == 'boss'
+	local isBoss = xPlayer.job.grade_name == 'boss' or bypassBoss
 	local xTarget = ESX.GetPlayerFromIdentifier(identifier)
 
 	if not isBoss then
@@ -462,9 +462,9 @@ ESX.RegisterServerCallback('esx_society:getFaction', function(source, cb, societ
     cb(faction)
 end)
 
-ESX.RegisterServerCallback('esx_society:setFaction', function(source, cb, identifier, faction, grade, actionType)
+ESX.RegisterServerCallback('esx_society:setFaction', function(source, cb, identifier, faction, grade, actionType, bypassBoss)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local isBoss = xPlayer.faction.grade_name == 'boss'
+    local isBoss = xPlayer.faction.grade_name == 'boss' or bypassBoss
     local xTarget = ESX.GetPlayerFromIdentifier(identifier)
 
     if not isBoss then
