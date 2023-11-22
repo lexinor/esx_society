@@ -30,7 +30,7 @@ function OpenBossMenu(society, close, options)
                 deposit = true,
                 wash = true,
                 employees = true,
-                salary = true,
+                salary = false,
                 grades = true
             }
 
